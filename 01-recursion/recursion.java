@@ -23,6 +23,51 @@ public class recursion{
 	}
     }
 
+    //---------Codingbat Problems------------------
+    public int fibonacci(int n) {
+	if (n==0){
+	    return 0;
+	}
+	if (n==1){
+	    return 1;
+	}
+	return fibonacci(n-1) + fibonacci(n-2);  
+    }
+
+    public int bunnyEars2(int bunnies) {
+	if (bunnies==0) return 0;
+	else{
+	    if (bunnies%2==1){ //odd
+		return 2+bunnyEars2(bunnies-1);
+	    }
+	    else{ //even
+		return 3+bunnyEars2(bunnies-1);
+	    }
+	}
+    }
+
+
+    public int strCount(String str, String sub) {
+	if (str.length()<sub.length()) return 0;
+	else {
+	    if (sub.equals(str.substring(0,sub.length()))){
+		return 1 + strCount(str.substring(sub.length()),sub);
+	    }
+	    else{
+		return strCount(str.substring(1),sub);
+	    }
+	}
+    }
+
+    public int sumDigits(int n) {
+	if (n==0) return 0;
+	else return (n%10)+sumDigits(n/10);
+    }
+    public String allStar(String str) {
+	if (str.length()<=1) return str;
+	else return str.substring(0,1)+"*"+allStar(str.substring(1));
+    }
+
     //-----------------MAIN---------------------------
     public static void main(String args[]){
 	recursion r = new recursion();
