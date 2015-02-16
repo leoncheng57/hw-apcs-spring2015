@@ -1,6 +1,7 @@
 public class Knights{
 
     private int[][] board;
+    private boolean solved = false;
 
     public void delay(int n){
 	try{
@@ -21,35 +22,42 @@ public class Knights{
 	String s = "[2J\n";
 	for (int x=0;x<board.length;x++){
 	    for (int y =0;y<board[0].length;y++){
-		s = s+board[x][y];
+		s = String.format(s+"%3d",board[x][y]);
 	    }
 	    s=s+"\n";
 	}
 	return s;
     }
 
-    public void solve(int x, int y){
-	/*
-	  return if !=0
-	  exit if reached N*N=25
-	  otherwise: try one in each direction 
-	  solve: x+1,y+2..x-1,y+2..etc
-	 */
-	solve(x+1,y+2);
-	solve(x+1,y-2);
-	solve(x-1,y+2);
-	solve(x-1,y-2);
-	solve(x+2,y+1);
-	solve(x-2,y+1);
-	solve(x+2,y-1);
-    	solve(x-2,y-1);
+    public void solve(int x, int y, int count){
+	if (x>=board.length || x<0 ||  y>=board[0].length || y<0 || board[x][y]!=0){
+	    return;
+	}
+	if (count == 25){
+	    solved = true;
+	}	
+	//delay(800);
+	board[x][y] = count;
+	count++;
+	System.out.println(this);
+	System.out.printf("count=%d, x=%d, y=%d \n",count,x,y);
+	solve(x+1,y+2,count);
+	solve(x+1,y-2,count);
+	solve(x-1,y+2,count);
+	solve(x-1,y-2,count);
+	solve(x+2,y+1,count);
+	solve(x-2,y+1,count);
+	solve(x+2,y-1,count);
+    	solve(x-2,y-1,count);
+	if (!solved){
+	    board[x][y]=0;
+	}
     }
 	
     public static void main (String[] args){
 	Knights k = new Knights();
-	System.out.println(k);
-    }
-    
+	k.solve(2,2,1);
+    }    
 }
 
 
