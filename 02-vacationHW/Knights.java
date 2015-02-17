@@ -53,10 +53,14 @@ public class Knights{
 	    board[x][y]=0;
 	}
     }
+
+    public void solve(int x, int y){
+	solve(x,y,1);
+    }
 	
     public static void main (String[] args){
 	Knights k = new Knights();
-	k.solve(2,2,1);
+	k.solve(2,2);
     }    
 }
 
