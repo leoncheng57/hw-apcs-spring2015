@@ -1,3 +1,6 @@
+/*
+  NOTE: THIS IS INCOMPLETE AND NOT WORKING
+ */
 public class Queens{
 
     private char[][] board;
