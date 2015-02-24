@@ -45,7 +45,7 @@ public class makelake{
       subtract one from all those
       keep going until you reach the elev to be stomped down
      */
-    public void stomp(){}
+    public void stomp(int r, int c, int down){}
     
     
     /*
