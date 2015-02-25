@@ -23,7 +23,6 @@ public class mergesort{
 		ret.add(b.get(k));
 		k++;
 	    }
-	    // System.out.printf("a:%d, b%d",a,b);
 	}
 	if(i<a.size()){
 	    for (i=i;i<a.size();i++)
