@@ -35,7 +35,7 @@ public class mergesort{
 	}	
 	return ret;
     }
-
+    
     public static void main(String[] args){
 	mergesort m = new mergesort();
 	ArrayList<Integer> a = new ArrayList<Integer>(Arrays.asList(1,2,6,99));

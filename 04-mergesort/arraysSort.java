@@ -5,27 +5,27 @@ public class arraysSort{
     
     public int[]  merge(int[] a, int[] b){
 	int[] ret = new int[a.length+b.length];
-	int i = 0;
-	int k = 0;
-	while (i<a.length && k<b.length){
-	    //System.out.printf("a[%d]=%d and b[%d]=%d",i,a[i],k,b[k]);
-	    if (a[i]<b[k]){
-		ret[i+k]=a[i];
-		i++;
+	int x = 0;
+	int y = 0;
+	while (x<a.length && y<b.length){
+	    //System.out.printf("a[%d]=%d and b[%d]=%d",x,a[x],y,b[y]);
+	    if (a[x]<b[y]){
+		ret[x+y]=a[x];
+		x++;
 	    }
 	    else{
-		ret[i+k]=b[k];
-		k++;
+		ret[x+y]=b[y];
+		y++;
 	    }
-	    //System.out.println("\nret: "+Arrays.toString(ret));
+	    //System.out.println("\nret: "+Arrays.toStrxng(ret));
 	}
-	if(i<a.length){
-	    for (i=i;i<a.length;i++)
-		ret[i+k]=a[i];
+	if(x<a.length){
+	    for (x=x;x<a.length;x++)
+		ret[x+y]=a[x];
 	}
-	if(k<b.length){
-	    for (k=k;k<b.length;k++)
-		ret[i+k]=b[k];
+	if(y<b.length){
+	    for (y=y;y<b.length;y++)
+		ret[x+y]=b[y];
 	}	
 	return ret;
     }
