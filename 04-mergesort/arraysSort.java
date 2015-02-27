@@ -32,8 +32,8 @@ public class arraysSort{
 
     public static void main(String[] args){
 	arraysSort s = new arraysSort();
-	int[] a = {1,2,5,6,8,9,12,23,45,56,67,78,90,123};
-	int[] b = {0,4,100,101,102,123};
+	int[] a = {1,2,6,99};
+	int[] b = {0,4,5,7,8,9,12,51,65,78,98};
 	System.out.println(Arrays.toString( s.merge(a,b) ));
     }
     
