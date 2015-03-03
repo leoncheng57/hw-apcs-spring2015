@@ -1,3 +1,5 @@
+//NOTE: File currently does not work!
+
 import java.util.*;
 import java.io.*;
 
@@ -10,7 +12,7 @@ public class makelake{
 		     
     int[][] herd; //3x3 grid
 
-    int row, col, elev;
+    int row, col, high, elev;
     
     public makelake(int a, int b, int c){
 	row = a;
@@ -19,7 +21,7 @@ public class makelake{
     }
     
     /*
-      extracts the herd from the given stuff
+      extracts the 3x3 herd from the land
      */
     public void makeHerd(int r, int c){
 	herd = new int[3][3];
@@ -44,8 +46,25 @@ public class makelake{
       see if any neighbors have the same number
       subtract one from all those
       keep going until you reach the elev to be stomped down
-     */
-    public void stomp(int r, int c, int down){}
+    */
+    public void stomp(int r, int c, int down){
+	high = land[0][0];
+	for (int i = 0;i<herd.length;i++){
+	    for (int j =0;j<herd[0].length;j++){
+		if (land[i][j]>high){
+		    high = land[i][j];
+		}
+	    }
+	}
+	int newElev = high - down;
+	for (int i = 0;i<herd.length;i++){
+	    for (int j =0;j<herd[0].length;j++){
+		if(land[i][j]>newElev){
+		    land[i][j] = newElev;
+		}
+	    }
+	}
+    }
     
     
     /*
@@ -54,7 +73,16 @@ public class makelake{
       sum it up
       multiply by 72*72
     */
-    public void findArea(){}
+    public void findArea(){
+	int total = 0;
+	for (int i = 0;i<land.length;i++){
+	    for (int j =0;j<land[0].length;j++){
+		if (land[i][j]<high){
+		    total += high - land[i][j];
+		}
+	    }
+	}
+    }
 
     /*---------------------MAIN-------------------------*/
     public static void main(String[] args){
