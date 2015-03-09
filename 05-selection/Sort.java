@@ -1,3 +1,5 @@
+//Theres is something wrong with the code
+
 import java.util.*;
 import java.io.*;
 
@@ -22,19 +24,12 @@ public class Sort{
      */
     public void select(int[] A,int k,int L,int H){
 	
-	int P = A[L];
-	int Pi = L;
+	int P = A[H];
+	int Pi = H;
 	//leaving L and H untampered with 
 	int Li = L;
 	int Hi = H;
-	//swap pivot value with highest index 
-	A[Li] = A[Hi];
-	A[Hi] = P;
-	Pi=Hi;
-	Hi--;
-
 	print( Li, Hi, Pi, k, A);	    
-
 
 	//The main workload: 
 	//swapping things to the left or right side ofthe array
@@ -68,48 +63,20 @@ public class Sort{
 	    A[Li+1] = P;
 	    Pi = Li+1;
 	}
-
 	print( Li, Hi, Pi, k, A);	    
-
+	
 	//either found OR retry with smaller portion of array
-	System.out.println("k="+k+","+"Pi="+Pi+"!!!");
 	if (k==Pi){
-	    System.out.println("FOUND!");
+	    System.out.printf("FOUND!: The %dth value is %d \n",k,A[Pi]);
 	}
 	else{
 	    if (k<Pi){
-		System.out.println("k is LESS");
 		select(A,k,L,Pi-1);
 	    }
 	    else {
-		System.out.println("k is GREATER");
 		select(A,k,Pi+1,H);
 	    }
-	}
-
-	/*
-	//either found OR retry with a smaller array
-	if (k==Pi){
-	    //System.out.println("Found!");
-	    System.out.printf("The %dth item is %d",k,A[Pi]);
-	    System.out.println();
-	}
-	else{
-	    if (k<Pi){
-		System.out.println("HEY"+(Pi));
-		select(A,k,L,Pi-1);
-		//redo with the part of the array before Pi
-	    }
-	    else{
-		System.out.println("HEy"+(Pi-1));
-		select(A,k,Pi+1,H);
-	    	
-		
-		//redo with the part of the array after  Pi
-	    }
-	}
-	*/
-	    
+	}	    
     }
     
     public void print(int Li, int Hi, int Pi, int k, int[] A){
