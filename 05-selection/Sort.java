@@ -1,5 +1,3 @@
-//Theres is something wrong with the code
-
 import java.util.*;
 import java.io.*;
 
