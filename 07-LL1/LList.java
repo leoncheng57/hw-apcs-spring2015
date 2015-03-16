@@ -21,7 +21,7 @@ public class LList{
 
     //WILL work if n is negative or out of range
     /*
-      public Node find(int n){
+    public Node find(int n){
 	Node tmp = l;
 	if (n<0)
 	    System.out.print("BAD! the index is negative!");
