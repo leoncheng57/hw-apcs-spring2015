@@ -32,7 +32,8 @@ public class LList{
     }
 
     public void remove(int n){
-	for (Node tmp = new Node("tmp"); n>1;tmp=tmp.getNext()){
+	Node tmp = new Node("tmp");
+	for (tmp=tmp; n>1;tmp=tmp.getNext()){
 	    n--;
 	}
 	tmp.setNext(tmp.getNext().getNext());
