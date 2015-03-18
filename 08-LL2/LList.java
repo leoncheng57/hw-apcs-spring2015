@@ -3,11 +3,11 @@ import java.io.*;
 
 public class LList{
 
-    private Node l = new Node("dummy");
+    private Node l = new Node(-1); //this is the dummy node
     private int len = 0;
 
     //NOTE: The dummy is not the zeroth element, but points to the 0th element
-    public String get(int n){
+    public int get(int n){
 	if (n<0 || n>len){
 	    throw new NoSuchElementException();
 	}
@@ -19,7 +19,7 @@ public class LList{
 	return tmp.getNext().getData();	
     }
         
-    public void add(String s){
+    public void add(int s){
 	Node tmp = new Node(s);
 	tmp.setNext(l.getNext());
 	l.setNext(tmp);
@@ -27,7 +27,7 @@ public class LList{
     }
 
 
-    public void add(int n, String s){
+    public void add(int n, int s){
 	if (n<0 || n>len){
 	    throw new NoSuchElementException();
 	}
@@ -41,7 +41,7 @@ public class LList{
 	len++;
     }
 
-    public String remove(int n){
+    public int remove(int n){
 	if (n<0 || n>len){
 	    throw new NoSuchElementException();
 	}	
@@ -49,7 +49,7 @@ public class LList{
 	for (int i=0; i<n;i++){
 	    tmp = tmp.getNext();
 	}
-	String s = tmp.getNext().getData();
+	int s = tmp.getNext().getData();
 	tmp.setNext(tmp.getNext().getNext());
 	len--;
 	return s;
