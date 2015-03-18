@@ -41,6 +41,8 @@ public class LList{
 	len++;
     }
 
+    //this remove takes input: index 
+    /*
     public int remove(int n){
 	if (n<0 || n>len){
 	    throw new NoSuchElementException();
@@ -53,6 +55,19 @@ public class LList{
 	tmp.setNext(tmp.getNext().getNext());
 	len--;
 	return s;
+    }
+    */
+
+    //this remove takes input: value i
+    public boolean remove (int i){
+	Node t = l;
+	for (t=t;t.getNext != null; t=t.getNext()){
+	    if (t.getNext().getData()==i){
+		tmp.setNext(tmp.getNext().getNext());
+		return true;
+	    }
+	}
+	return false;
     }
     
     public String toString(){
