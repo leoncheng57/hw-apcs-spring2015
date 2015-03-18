@@ -10,8 +10,10 @@ public class Driver{
 	System.out.println();
 	System.out.println(l.get(0));
 	System.out.println(l.get(5));
-	System.out.println(l.get(7));
+	//System.out.println(l.get(7)); //nullpointerexception since the getData would be null
+	//System.out.println(l.get(12303)); //nosuchelement
 
+	
 	System.out.println();
 	l.add(0,"a");
 	System.out.println(l);	
@@ -21,15 +23,10 @@ public class Driver{
 	System.out.println(l);	
 
 	System.out.println();
-	l.remove(0);
+	System.out.println(l.remove(0));
 	System.out.println(l);	
-	l.remove(5);
+	System.out.println(l.remove(5));
 	System.out.println(l);	
 
-		
-	
-	System.out.println();
-	LList emptyL = new LList();
-	System.out.println(emptyL.get(0));
     }
 }
