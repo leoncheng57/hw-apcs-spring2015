@@ -2,14 +2,8 @@ public class LList{
 
     private Node l = new Node("dummy");
     private int len = 0;
-    
-    public void add(String s){
-	Node tmp = new Node(s);
-	tmp.setNext(l.getNext());
-	l.setNext(tmp);
-    }
 
-    //NOTE: The dummy is not the zeroth element, but it points to the 0th element
+    //NOTE: The dummy is not the zeroth element, but points to the 0th element
     public Node get(int n){
 	Node tmp = l;
 	while (n>0){
@@ -18,9 +12,16 @@ public class LList{
 	}
 	return tmp.getNext();	
     }
-    
+        
+    public void add(String s){
+	Node tmp = new Node(s);
+	tmp.setNext(l.getNext());
+	l.setNext(tmp);
+	len++;
+    }
 
-    public void insert(int n, String s){
+
+    public void add(int n, String s){
 	Node tmp = l;
 	for (n=n;n>1;tmp=tmp.getNext()){
 	    n--;
@@ -32,9 +33,9 @@ public class LList{
     }
 
     public void remove(int n){
-	Node tmp = new Node("tmp");
-	for (tmp=tmp; n>1;tmp=tmp.getNext()){
-	    n--;
+	Node tmp = l;
+	for (int i=0; i<n;i++){
+	    tmp = tmp.getNext();
 	}
 	tmp.setNext(tmp.getNext().getNext());
 	len--;
@@ -47,7 +48,7 @@ public class LList{
 	    s = s + tmp + " --> ";
 	}
 	s = s + "null";
-	//s+="\n"+"len="+len;
+	s+="\n"+"len="+len;
 	return s;
     }
 }
