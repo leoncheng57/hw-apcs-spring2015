@@ -60,9 +60,9 @@ public class LList{
 
     //this remove takes input: value i
     public boolean remove (int i){
-	Node t = l;
-	for (t=t;t.getNext != null; t=t.getNext()){
-	    if (t.getNext().getData()==i){
+	Node tmp = l;
+	for (tmp=tmp;tmp.getNext() != null; tmp=tmp.getNext()){
+	    if (tmp.getNext().getData()==i){
 		tmp.setNext(tmp.getNext().getNext());
 		return true;
 	    }
@@ -72,12 +72,12 @@ public class LList{
     
     public String toString(){
 	String s = "";
-	Node tmp;;
+	Node tmp;
 	for (tmp=l ; tmp!=null ; tmp=tmp.getNext()){
 	    s = s + tmp + " --> ";
 	}
 	s = s + "null";
-	s+="\n"+"len="+len;
+	//s+="\n"+"len="+len;
 	return s;
     }
 }

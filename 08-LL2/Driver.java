@@ -15,6 +15,8 @@ public class Driver{
 
 	System.out.println();
 	System.out.println(l.remove(1));
+	System.out.println(l.remove(42));
+	System.out.println(l.remove(32131));
 	System.out.println(l);	
 
     }
