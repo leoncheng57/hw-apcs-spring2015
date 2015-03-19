@@ -6,6 +6,18 @@ public class LList{
     private Node l = new Node(-1); //this is the dummy node
     private int len = 0;
 
+    public String toString(){
+	String s = "";
+	Node tmp;
+	for (tmp=l ; tmp!=null ; tmp=tmp.getNext()){
+	    s = s + tmp + " --> ";
+	}
+	s = s + "null";
+	//s+="\n"+"len="+len;
+	return s;
+    }
+
+
     //NOTE: The dummy is not the zeroth element, but points to the 0th element
     public int get(int n){
 	if (n<0 || n>len){
@@ -64,20 +76,15 @@ public class LList{
 	for (tmp=tmp;tmp.getNext() != null; tmp=tmp.getNext()){
 	    if (tmp.getNext().getData()==i){
 		tmp.setNext(tmp.getNext().getNext());
+		len--;
 		return true;
 	    }
 	}
 	return false;
     }
     
-    public String toString(){
-	String s = "";
-	Node tmp;
-	for (tmp=l ; tmp!=null ; tmp=tmp.getNext()){
-	    s = s + tmp + " --> ";
-	}
-	s = s + "null";
-	//s+="\n"+"len="+len;
-	return s;
+    public int size(){
+	return len;
     }
+    
 }
