@@ -1,54 +1,74 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
 public class Driver{
-		public static void main(String[] args) {
+    public static void main(String[] args){
 
-				LList<String> l = new LList<String>();
-				//ArrayList<String> l = new ArrayList<String>();
-				//LinkedList<String> l = new LinkedList<String>();
+	System.out.println("----------");	
 
-				LList<Integer> l2 = new LList<Integer>();
-				//ArrayList<Integer> l2 = new ArrayList<Integer>();
-				//LinkedList<Integer> l2 = new LinkedList<Integer>();
+	//LList<String> l = new LList<String>();
+	//ArrayList<String> l = new ArrayList<String>();
+	LinkedList<String> l = new LinkedList<String>();
+	
+	LList<Integer> l2 = new LList<Integer>();
+	//ArrayList<Integer> l2 = new ArrayList<Integer>();
+	//LinkedList<Integer> l2 = new LinkedList<Integer>();
+	
+	l.add("Hello");
+	l.add("world");
+	l.add("abs");
+	l.add("somehing");
+	l.add("else");
+	
+	System.out.println(l);
+  
+	for (int i =0; i<5; i++){
+	    l2.add(i);
+	}
+
+	System.out.println(l2);
+
+	System.out.println("----------");
+	
+	Iterator<String> i = l.iterator();
+	while (i.hasNext())
+	    System.out.println(i.next());
+	
+	Iterator<Integer> i2 = l2.iterator();
+	while (i2.hasNext())
+	    System.out.println(i2.next());
+	
+	System.out.println("----------");
+	
+	//Java foreach or for in loop
+	for (String s : l)
+	    System.out.print(s+", ");
+	System.out.println();
+
+	for (int j : l2)
+	    System.out.print(j+", ");
+	System.out.println();
+
+	System.out.println("----------");
 
 
-				l.add("Hello");
-				l.add("world");
-				l.add("abc");
-				l.add("something");
-				l.add("else");
+	//testing remove
+	
+	//with builtlin linkedlist
+	Iterator<String> i3 = l.iterator();
+	System.out.println(i3.hasNext());
+	System.out.println(i3.next());
+	i3.remove();
+	System.out.println(l);
 
-				System.out.println(l);
-
-				for (int i=0;i < 5; i++){
-						l2.add(i);
-				}
-
-				System.out.println(l2);
-
-				Iterator<String> i = l.iterator();
-				while (i.hasNext())
-							 System.out.println(i.next());
-				
-				Iterator<Integer> i2 = l2.iterator();
-				while (i2.hasNext())
-							 System.out.println(i2.next());
-				
-				System.out.println("-----------------");
-
-				// Java foreach or for in loop
-
-				for (String s : l){
-						System.out.print(s+", ");
-				}
-				System.out.println();
-
-				for (int j : l2){
-						System.out.print(j+", ");
-				}
-				System.out.println();
-				
-				
-		}
+	//with personal linkedlist
+	Iterator<Integer> i4 = l2.iterator();
+	System.out.println(i4.hasNext());
+	System.out.println(i4.next());
+	i4.remove(); //ISSUE: is this even being run?
+	i4.remove();	
+	System.out.println(l2);
+	
+	
+    }
 }
