@@ -10,7 +10,7 @@ public class LList<E> implements Iterable<E>{
     }
 
     public Iterator<E> iterator(){
-	LLit<E> i = new LLit<E>(l.getNext());
+	LLit<E> i = new LLit<E>(l);
 	return i;
     }
 
@@ -28,6 +28,5 @@ public class LList<E> implements Iterable<E>{
 	}
 	s = s +"null";
 	return s;
-    }
-    
+    }    
 }

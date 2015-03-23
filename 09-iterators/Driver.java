@@ -65,10 +65,9 @@ public class Driver{
 	Iterator<Integer> i4 = l2.iterator();
 	System.out.println(i4.hasNext());
 	System.out.println(i4.next());
-	i4.remove(); //ISSUE: is this even being run?
 	i4.remove();	
 	System.out.println(l2);
-	
+
 	
     }
 }
