@@ -1,6 +1,6 @@
 public class Driver{
     public static void main(String[] args){
-	myStack<String> mS = new myStack<String>();
+	myStack mS = new myStack();
 	System.out.println(mS.empty());
 	for (int i =0; i<10;i++){
 	    mS.push("goon #"+i);
@@ -13,8 +13,7 @@ public class Driver{
 	for (int i =0; i<5;i++){
 	    System.out.println(mS.top());
 	}
-	System.out.println(mS);
-	
+	System.out.println(mS);	
     }
     
 }
