@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 public class myQueueArraysTwo{
     private int[] a;
     private int start;
