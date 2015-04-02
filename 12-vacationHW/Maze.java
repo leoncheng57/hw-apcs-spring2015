@@ -45,7 +45,7 @@ public class Maze
 	    }
 				
     }
-		
+
     public String toString()
     {
 	String s = "[2J\n";
@@ -58,6 +58,11 @@ public class Maze
 	    }
 	return s;
     }
+
+    public void copy(char[][] blah){
+	for(int i = 0; i
+    }
+
 
     /*
       solved - instance variable to indicate we're done
@@ -85,44 +90,73 @@ public class Maze
 	// if (!solved){
 	//     board[x][y]=visited;
 	// }
-	Coor c = new Coor(x,y);
-	Queue<Coor> q = new Queue<Coor>();
-	q.enqueue(c);
-	Node<Coor> exit = null;
+	char[][] blah = board;
+	System.out.println(blah);
+	System.out.println(board);
+	delay(1000);
+	System.out.println(this);
+	Coor current = new Coor(x,y);
+	Queue<Coor> q = new Queue<Coor>(current);
+	Coor exit = null;
+	   
+
 	while (!q.empty()){
-	    Node<Coor> current = q.dequeue();
-	    int xval = current.getData().getX();
-	    int yval = current.getData().getY();
-	    if(board[xval][yval-1] != 'Z' && board[xval][yval-1] != ' '){
+	   System.out.println(this); 
+	       delay(10);
+	    System.out.println("please work");
+	    current = q.dequeue();
+	    int xval = current.getX();
+	    int yval = current.getY();
+	    
+	    if(yval>0 && (board[xval][yval-1] == '#' ||  board[xval][yval-1] == '$')){
 		if (board[xval][yval-1] == '$'){
+		    exit = new Coor(xval,yval-1,current);
 		    break;
 		}
-		q.enqueue(new Coor(xval,yval-1));
+		q.enqueue(new Coor(xval,yval-1,current));
+	
 	    }
-	    if(board[xval+1][yval] != 'Z' && board[xval+1][yval] != ' '){
+	    if(xval < board.length && (board[xval+1][yval] == '#' || board[xval+1][yval] == '$')){
 		if (board[xval+1][yval] == '$'){
+		    exit = new Coor(xval+1,yval,current);
 		    break;
 		}
-		q.enqueue(new Coor(xval+1,yval));
+		q.enqueue(new Coor(xval+1,yval,current));
+	
 	    }
-	    if(board[xval][yval+1] != 'Z' && board[xval][yval+1] != ' '){
+	    if(yval < board[0].length && (board[xval][yval+1] == '#' || board[xval][yval+1] == '$')){
 		if (board[xval][yval+1] == '$'){
+		    exit = new Coor(xval,yval+1,current);
 		    break;
 		}
-		q.enqueue(new Coor(xval,yval+1));
+		q.enqueue(new Coor(xval,yval+1,current));
+	
 	    }
-	    if(board[xval-1][yval] != 'Z' && board[xval-1][yval] != ' '){
+	    if(xval > 0 && (board[xval-1][yval] == '#' || board[xval-1][yval] == '$')){
 		if (board[xval-1][yval] == '$'){
+		    exit = new Coor(xval-1,yval,current);
 		    break;
 		}
-		q.enqueue(new Coor(xval-1,yval));
+		q.enqueue(new Coor(xval-1,yval,current));
+	
 	    }
+		board[xval][yval] = 'Z';    
+	    System.out.println(this);
 	}
 	if(exit == null){
 	    return;
 	}
 	else{
-	    
+	    board = blah;
+	    Coor ph = current;
+	    System.out.println(Testing(blah));
+	    System.out.println("are you getting this?");
+	    while(ph.getPrev()!= null){
+		board[ph.getX()][ph.getY()]='Z';
+		ph=ph.getPrev();
+	    }
+	    board[ph.getX()][ph.getY()]='Z';
+	
 	}
 
 		
