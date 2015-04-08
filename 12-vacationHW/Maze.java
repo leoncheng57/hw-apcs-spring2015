@@ -59,10 +59,13 @@ public class Maze
 	return s;
     }
 
-    public void copy(char[][] blah){
-	for(int i = 0; i
+    public void copy(char[][] something){
+     	for(int r = 0; r<board.length; r++){
+	    for (int c = 0 ;c<board[0].length;c++){
+		something[r][c]=board[r][c];
+	    }
+	}
     }
-
 
     /*
       solved - instance variable to indicate we're done
@@ -90,20 +93,19 @@ public class Maze
 	// if (!solved){
 	//     board[x][y]=visited;
 	// }
-	char[][] blah = board;
-	System.out.println(blah);
-	System.out.println(board);
+	char[][] blah = new char[board.length][board[0].length];
+	copy(blah);
 	delay(1000);
-	System.out.println(this);
+	//System.out.println(this);
 	Coor current = new Coor(x,y);
 	Queue<Coor> q = new Queue<Coor>(current);
 	Coor exit = null;
 	   
 
 	while (!q.empty()){
-	   System.out.println(this); 
-	       delay(10);
-	    System.out.println("please work");
+	    System.out.println(this); 
+	    delay(10);
+	    //System.out.println("please work");
 	    current = q.dequeue();
 	    int xval = current.getX();
 	    int yval = current.getY();
@@ -141,7 +143,7 @@ public class Maze
 	
 	    }
 		board[xval][yval] = 'Z';    
-	    System.out.println(this);
+		//System.out.println(this);
 	}
 	if(exit == null){
 	    return;
@@ -149,8 +151,7 @@ public class Maze
 	else{
 	    board = blah;
 	    Coor ph = current;
-	    System.out.println(Testing(blah));
-	    System.out.println("are you getting this?");
+	    //System.out.println("are you getting this?");
 	    while(ph.getPrev()!= null){
 		board[ph.getX()][ph.getY()]='Z';
 		ph=ph.getPrev();
@@ -160,7 +161,7 @@ public class Maze
 	}
 
 		
-	    
+	
     }
     
     public static void main(String[] args){
