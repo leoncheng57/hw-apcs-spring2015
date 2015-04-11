@@ -98,7 +98,7 @@ public class Maze
 	delay(1000);
 	//System.out.println(this);
 	Coor current = new Coor(x,y);
-	Queue<Coor> q = new Queue<Coor>(current);
+	myStack<Coor> q = new myStack<Coor>(current);
 	Coor exit = null;
 	   
 
@@ -106,7 +106,7 @@ public class Maze
 	    System.out.println(this); 
 	    delay(10);
 	    //System.out.println("please work");
-	    current = q.dequeue();
+	    current = q.pop();
 	    int xval = current.getX();
 	    int yval = current.getY();
 	    
@@ -115,7 +115,7 @@ public class Maze
 		    exit = new Coor(xval,yval-1,current);
 		    break;
 		}
-		q.enqueue(new Coor(xval,yval-1,current));
+		q.push(new Coor(xval,yval-1,current));
 	
 	    }
 	    if(xval < board.length && (board[xval+1][yval] == '#' || board[xval+1][yval] == '$')){
@@ -123,7 +123,7 @@ public class Maze
 		    exit = new Coor(xval+1,yval,current);
 		    break;
 		}
-		q.enqueue(new Coor(xval+1,yval,current));
+		q.push(new Coor(xval+1,yval,current));
 	
 	    }
 	    if(yval < board[0].length && (board[xval][yval+1] == '#' || board[xval][yval+1] == '$')){
@@ -131,7 +131,7 @@ public class Maze
 		    exit = new Coor(xval,yval+1,current);
 		    break;
 		}
-		q.enqueue(new Coor(xval,yval+1,current));
+		q.push(new Coor(xval,yval+1,current));
 	
 	    }
 	    if(xval > 0 && (board[xval-1][yval] == '#' || board[xval-1][yval] == '$')){
@@ -139,7 +139,7 @@ public class Maze
 		    exit = new Coor(xval-1,yval,current);
 		    break;
 		}
-		q.enqueue(new Coor(xval-1,yval,current));
+		q.push(new Coor(xval-1,yval,current));
 	
 	    }
 		board[xval][yval] = 'Z';    
