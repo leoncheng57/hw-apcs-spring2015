@@ -98,7 +98,8 @@ public class Maze
 	delay(1000);
 	//System.out.println(this);
 	Coor current = new Coor(x,y);
-	myStack<Coor> q = new myStack<Coor>(current);
+	myStack<Coor> q = new myStack<Coor>();
+	q.push(current);
 	Coor exit = null;
 	   
 
