@@ -14,6 +14,10 @@ public class Frontier {
     public boolean isEmpty(){
 	return l.isEmpty();
     }
+
+    public void addInOrder(Node n){
+	//insert code TODO!
+    }
 }
 
 

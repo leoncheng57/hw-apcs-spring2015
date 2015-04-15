@@ -9,10 +9,6 @@ public class Node {
 	this.y = y;
     }
 
-    public void setPriority(int bleh){
-	priority = bleh;
-    }
-
     public double getPriority(){
 	return priority;
     }

@@ -15,7 +15,8 @@ public class Maze
     private boolean solved = false;
 
     private Frontier f;
-		
+    private Node end;
+    
     public void delay(int n){
 	try {
 	    Thread.sleep(n);
@@ -97,12 +98,25 @@ public class Maze
 	if (board[tx][ty]=='#' || board[tx][ty]=='$'){
 	    tmp = new Node(tx,ty);
 	    tmp.setPrev(current);
-	    f.add(tmp);
+	    f.addInOrder(tmp);
 	}
 						
     }
 
-    public void bfs(int x, int y){
+    public double findExit(){
+	for (int r = 0; r<board.length; r++){
+	    for (int c = 0;c<board[0].length;c++){
+		if (board[r][c]=='$'){
+		    end = new Node(r,c);
+		}
+		break;
+	    }
+	}
+    }
+    
+    public void search(int x, int y){
+	findExit();
+	
 	//f = new Frontier();
 	f = new StackFront();
 
@@ -140,7 +154,7 @@ public class Maze
     public static void main(String[] args){
 	Maze m = new Maze();
 	System.out.println(m);
-	m.bfs(1,1);
+	m.search(1,1);
 	System.out.println(m);
 	
 		
