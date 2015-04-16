@@ -16,7 +16,12 @@ public class Frontier {
     }
 
     public void addInOrder(Node n){
-	//insert code TODO!
+	double p = n.getPriority();
+	int i = 0;
+	for (Node tmp : l){
+	    if (tmp.getPriority()>p) l.add(i,n);
+	    i++;
+	}
     }
 }
 

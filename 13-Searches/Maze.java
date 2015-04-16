@@ -90,26 +90,37 @@ public class Maze
 	}
     }
 
+    public double findPriority(int nx, int ny){
+	int ex = end.getX();
+	int ey = end.getY();
+	int dx = Math.abs(ex-nx);
+	int dy = Math.abs(ey-ny);
+	double ret = dx + dy;
+	//double ret = Math.sqrt(dx**2 + dy**2);
+	return ret;
+    }
+    
     /*
       Only adds if the tx,ty spot is available path or exit
     */
     public void addToFront(int tx,int ty, Node current){
 	Node tmp = null;
 	if (board[tx][ty]=='#' || board[tx][ty]=='$'){
-	    tmp = new Node(tx,ty);
+	    tmp = new Node(tx,ty,findPriority(tx,ty));
 	    tmp.setPrev(current);
 	    f.addInOrder(tmp);
 	}
+	System.out.println("ADDEDSOMETHING");
 						
     }
-
-    public double findExit(){
+    
+    public void findExit(){
 	for (int r = 0; r<board.length; r++){
 	    for (int c = 0;c<board[0].length;c++){
 		if (board[r][c]=='$'){
-		    end = new Node(r,c);
+		    end = new Node(r,c,0);
+		    break;
 		}
-		break;
 	    }
 	}
     }
@@ -117,10 +128,10 @@ public class Maze
     public void search(int x, int y){
 	findExit();
 	
-	//f = new Frontier();
-	f = new StackFront();
+	f = new Frontier();
+	//f = new StackFront();
 
-	f.add(new Node(x,y));
+	f.add(new Node(x,y,findPriority(x,y)));
 
 	int tx=0,ty=0;
 	Node current = null;
@@ -141,6 +152,8 @@ public class Maze
 
 	    delay(50);
 	    System.out.println(this);
+	    System.out.println("HELLO");
+	    
 	}
 
 	// path recovery
@@ -155,7 +168,7 @@ public class Maze
 	Maze m = new Maze();
 	System.out.println(m);
 	m.search(1,1);
-	System.out.println(m);
+        System.out.println(m);
 	
 		
     }
