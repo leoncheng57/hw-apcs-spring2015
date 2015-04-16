@@ -89,16 +89,6 @@ public class Maze
 	    board[x][y]=visited;
 	}
     }
-
-    public double findPriority(int nx, int ny){
-	int ex = end.getX();
-	int ey = end.getY();
-	int dx = Math.abs(ex-nx);
-	int dy = Math.abs(ey-ny);
-	double ret = dx + dy;
-	//double ret = Math.sqrt(dx**2 + dy**2);
-	return ret;
-    }
     
     /*
       Only adds if the tx,ty spot is available path or exit
@@ -106,12 +96,10 @@ public class Maze
     public void addToFront(int tx,int ty, Node current){
 	Node tmp = null;
 	if (board[tx][ty]=='#' || board[tx][ty]=='$'){
-	    tmp = new Node(tx,ty,findPriority(tx,ty));
+	    tmp = new Node(tx,ty);
 	    tmp.setPrev(current);
 	    f.addInOrder(tmp);
 	}
-	System.out.println("ADDEDSOMETHING");
-						
     }
     
     public void findExit(){
@@ -131,7 +119,7 @@ public class Maze
 	f = new Frontier();
 	//f = new StackFront();
 
-	f.add(new Node(x,y,findPriority(x,y)));
+	f.add(new Node(x,y));
 
 	int tx=0,ty=0;
 	Node current = null;
