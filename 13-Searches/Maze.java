@@ -15,7 +15,7 @@ public class Maze
     private boolean solved = false;
 
     private Frontier f;
-    public static Node end = new Node(10,10);
+    public Node end;
     
     public void delay(int n){
 	try {
@@ -90,6 +90,16 @@ public class Maze
 	}
     }
     
+    public double findPriority(int x, int y){
+	int ex = end.getX();
+	int ey = end.getY();
+	int dx = Math.abs(ex-x);
+	int dy = Math.abs(ey-y);
+	double p = dx  + dy;
+	//double p = Math.sqrt(dy**2+dx**2);
+	return p;
+    }
+
     /*
       Only adds if the tx,ty spot is available path or exit
     */
@@ -97,6 +107,7 @@ public class Maze
 	Node tmp = null;
 	if (board[tx][ty]=='#' || board[tx][ty]=='$'){
 	    tmp = new Node(tx,ty);
+	    tmp.setPriority(findPriority(tx,ty));
 	    tmp.setPrev(current);
 	    f.add(tmp);
 	}
@@ -107,6 +118,7 @@ public class Maze
 	    for (int c = 0;c<board[0].length;c++){
 		if (board[r][c]=='$'){
 		    end = new Node(r,c);
+		    end.setPriority(0);
 		    break;
 		}
 	    }
@@ -119,8 +131,11 @@ public class Maze
 	f = new Frontier();
 	//f = new StackFront();
 
-	f.add(new Node(x,y));
-
+	Node tmp = new Node(x,y);
+	tmp.setPriority(findPriority(x,y));
+	f.add(tmp);
+	
+	
 	int tx=0,ty=0;
 	Node current = null;
 	while (!f.isEmpty()){
