@@ -99,6 +99,7 @@ public class Maze
 	//double p = dx  + dy; //manhattan
 	double p = Math.sqrt(dy*dy+dx*dx);//euclidean
 	return p;
+	
     }
 
     /*
