@@ -15,7 +15,7 @@ public class Maze
     private boolean solved = false;
 
     private Frontier f;
-    private Node end;
+    public static Node end = new Node(10,10);
     
     public void delay(int n){
 	try {
@@ -98,7 +98,7 @@ public class Maze
 	if (board[tx][ty]=='#' || board[tx][ty]=='$'){
 	    tmp = new Node(tx,ty);
 	    tmp.setPrev(current);
-	    f.addInOrder(tmp);
+	    f.add(tmp);
 	}
     }
     
@@ -106,7 +106,7 @@ public class Maze
 	for (int r = 0; r<board.length; r++){
 	    for (int c = 0;c<board[0].length;c++){
 		if (board[r][c]=='$'){
-		    end = new Node(r,c,0);
+		    end = new Node(r,c);
 		    break;
 		}
 	    }
