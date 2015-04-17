@@ -15,7 +15,7 @@ public class Maze
     private boolean solved = false;
 
     private Frontier f;
-    public Node end;
+    private Node end;
     
     public void delay(int n){
 	try {
@@ -91,14 +91,18 @@ public class Maze
 	}
     }
     
-    public double findPriority(int x, int y){
+    public double findPriority(int x, int y, Node n){
 	int ex = end.getX();
 	int ey = end.getY();
 	int dx = Math.abs(ex-x);
 	int dy = Math.abs(ey-y);
-	//double p = dx  + dy; //manhattan
-	double p = Math.sqrt(dy*dy+dx*dx);//euclidean
-	return p;
+	//manhattan
+	//double p = dx  + dy; 
+	//euclidean
+	double p = Math.sqrt(dy*dy+dx*dx);
+	//AStar
+	p+=n.getStep();
+	return p;	
     }
 
     /*
@@ -108,7 +112,8 @@ public class Maze
 	Node tmp = null;
 	if (board[tx][ty]=='#' || board[tx][ty]=='$'){
 	    tmp = new Node(tx,ty);
-	    tmp.setPriority(findPriority(tx,ty));
+	    tmp.setPriority(findPriority(tx,ty,tmp));
+	    tmp.setStep(current.getStep()+1);
 	    tmp.setPrev(current);
 	    f.add(tmp);
 	}
@@ -132,7 +137,8 @@ public class Maze
 	//f = new StackFront();
 
 	Node tmp = new Node(x,y);
-	tmp.setPriority(findPriority(x,y));
+	tmp.setPriority(findPriority(x,y,tmp));
+	tmp.setStep(0);
 	f.add(tmp);
 	
 	
