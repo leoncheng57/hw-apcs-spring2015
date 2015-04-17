@@ -46,7 +46,8 @@ public class Maze
 	catch (Exception e)
 	    {
 	    }
-				
+	
+	findExit();
     }
 		
     public String toString()
@@ -126,7 +127,6 @@ public class Maze
     }
     
     public void search(int x, int y){
-	findExit();
 	
 	f = new Frontier();
 	//f = new StackFront();
