@@ -19,7 +19,7 @@ public class Node{
 	left = n;
     }
     
-    pubilc Node getRight(){
+    public Node getRight(){
 	return right;
     }
 

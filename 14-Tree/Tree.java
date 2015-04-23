@@ -23,7 +23,7 @@ public class Tree{
 	Node T2;
 	while (T!=null){
 	    T2 = T;
-	    int c = t.getData.compareTo(i);
+	    int c = T.getData.compareTo(i);
 	    if (c==0)
 		return T;
 	    else if (c>0)
@@ -32,6 +32,12 @@ public class Tree{
 		T=T.getLeft();
 	}
 	return null;
+    }
+
+    public static void main(String[] args){
+	Tree t = new Tree();
+	t.insert(12321);
+	t.insert(25123);
     }
     
 }
