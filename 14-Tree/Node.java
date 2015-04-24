@@ -2,6 +2,13 @@ public class Node{
     private Node left, right;
     private int data;
 
+    public Node(){
+    }
+
+    public Node(int i){
+        data = i;
+    }
+
     public int getData(){
 	return data;
     }
@@ -23,7 +30,7 @@ public class Node{
 	return right;
     }
 
-    public void setright(Node n){
+    public void setRight(Node n){
 	right = n;
     }
 
