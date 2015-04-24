@@ -37,4 +37,9 @@ public class Node{
     public int compareTo(Node n){
 	return this.data-n.getData();
     }
+
+    public String toString(){
+	return ""+data;
+    }
+    
 }
