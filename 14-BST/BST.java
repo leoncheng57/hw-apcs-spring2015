@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+
 public class BST{
     Node r;
 
@@ -81,9 +82,9 @@ public class BST{
 	}
 
 	if (t.getRight() == null)
-	    t2.setLeft(null);
+	    t2.setLeft(t.getLeft());
 	else if (t.getLeft() ==null)
-	    t2.setRight(null);
+	    t2.setRight(t.getRight());
 	else{
 	    Node l2 = null;
 	    Node l = t.getLeft();
@@ -93,9 +94,9 @@ public class BST{
 	    }
 	    t=l;
 	    if (l.getRight() == null)
-		l2.setLeft(null);
+		l2.setLeft(l.getLeft());
 	    else if (l.getLeft() ==null)
-		l2.setRight(null);
+		l2.setRight(l.getRight());
 		
 	}
 	
@@ -108,6 +109,8 @@ public class BST{
 	    t.insert(i);
 	}
 	System.out.println(t);
+	t.remove(2);
+	t.remove(4);
 	t.remove(5);
 	System.out.println(t);
 	
