@@ -85,11 +85,18 @@ public class BST{
 	else if (t.getLeft() ==null)
 	    t2.setRight(null);
 	else{
+	    Node l2 = null;
 	    Node l = t.getLeft();
-	    while(l.getRight()!=null)
+	    while(l.getRight()!=null){
+		l2=l;
 		l=l.getRight();
+	    }
 	    t=l;
-	    
+	    if (l.getRight() == null)
+		l2.setLeft(null);
+	    else if (l.getLeft() ==null)
+		l2.setRight(null);
+		
 	}
 	
     }
