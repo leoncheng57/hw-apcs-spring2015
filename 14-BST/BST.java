@@ -61,17 +61,49 @@ public class BST{
 	return traverse(r);
     }
 
+    public void remove(int i){
+	Node t2=null;
+	Node t = r;
+	if (r==null){
+	    return;
+	}
+								
+	while (t!=null && t.getData()!=i){
+	    t2 = t;
+	    if (t.getData()==i)
+		return;
+	    else if (t.getData() < i)
+		t=t.getRight();
+	    else if (t.getData() > i)
+		t=t.getLeft();
+	    else
+		return;
+	}
+
+	if (t.getRight() == null)
+	    t2.setLeft(null);
+	else if (t.getLeft() ==null)
+	    t2.setRight(null);
+	else{
+	    Node l = t.getLeft();
+	    while(l.getRight()!=null)
+		l=l.getRight();
+	    t=l;
+	    
+	}
+	
+    }
+    
     public static void main(String[] args){
 	BST t = new BST();
 	Random r = new Random();
-	for (int i = 0; i < 200; i ++){
-	    int z = r.nextInt(100);
-	    //System.out.println(z);
-	    t.insert(z);
+	for (int i = 0; i < 10; i ++){
+	    t.insert(i);
 	}
 	System.out.println(t);
-	//				t.insert(30);
-	System.out.println(t.search(30));
+	t.remove(5);
+	System.out.println(t);
+	
     }
 }
 
