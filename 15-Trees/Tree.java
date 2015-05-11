@@ -51,7 +51,7 @@ public class Tree{
 
     public String traverse(Node t){
 	if (t==null){
-	    return "";
+	    return ",";
 	}
 	else{
 	    return traverse(t.getLeft())+t.getData()+traverse(t.getRight());
@@ -62,6 +62,46 @@ public class Tree{
 	return traverse(r);
     }
 
+    public int maxValue(){
+	return maxValue(r);
+    }
+    
+    //INCOMPLETE
+    //pretending that it is not a binary SEARCH tree, just a binary tree
+    public int maxValue(Node t){
+	if (t==null){
+	    return -1; //this value should never be the max, should be smaller than all values in the tree
+	}
+	else{
+	    System.out.println(t+"HELLO");
+	    if (maxValue(t.getLeft())>maxValue(t.getRight())) return maxValue(t.getLeft());
+	    else  return maxValue(t.getRight());
+									      
+	}	    
+    }
+
+    public int height(){
+	return height(r);
+    }
+    
+    //INCOMPLETE
+    public int height(Node t){
+	int maxHeight = 0;
+	if (t==null) return 0;
+	else {
+	    int left = 1+height(t.getLeft());
+	    int right = 1+height(t.getRight());
+	    if (left>right) return left;
+	    else return right;
+	}
+    }
+    
+    
+    // height(Node t);
+    // splitDupes(Node t);
+    // longest(Node t); //how in the world to do this?
+    
+    
     public static void main(String[] args){
 	Tree t = new Tree();
 	Random r = new Random();
@@ -73,6 +113,8 @@ public class Tree{
 	System.out.println(t);
 	//				t.insert(30);
 	System.out.println(t.search(30));
+	System.out.println(t.maxValue());
+	System.out.println(t.height());
     }
 }
 
