@@ -84,7 +84,7 @@ public class Tree{
 	return height(r);
     }
     
-    //INCOMPLETE
+ 
     public int height(Node t){
 	int maxHeight = 0;
 	if (t==null) return 0;
