@@ -62,22 +62,25 @@ public class Tree{
 	return traverse(r);
     }
 
+  public int max(int a, int b, int c){
+    if (a>b && a>c) return a;
+    if (b>a && b>c) return b;
+    else return c;
+    
+  }
+
     public int maxValue(){
-	return maxValue(r);
+  	  return maxValue(r);
     }
     
-    //INCOMPLETE
     //pretending that it is not a binary SEARCH tree, just a binary tree
     public int maxValue(Node t){
 	if (t==null){
 	    return -1; //this value should never be the max, should be smaller than all values in the tree
 	}
-	else{
-	    System.out.println(t+"HELLO");
-	    if (maxValue(t.getLeft())>maxValue(t.getRight())) return maxValue(t.getLeft());
-	    else  return maxValue(t.getRight());
-									      
-	}	    
+    else{
+      return max(maxValue(t.getLeft()),t.getData(),maxValue(t.getRight()));
+    }
     }
 
     public int height(){
@@ -96,10 +99,39 @@ public class Tree{
 	}
     }
     
+  public void splitDupes(){
+    splitDupes(r);
+  }
     
-    // height(Node t);
-    // splitDupes(Node t);
-    // longest(Node t); //how in the world to do this?
+   public void splitDupes(Node t){
+    if (t==null) return;
+    if(t.getLeft()!=null && t.getLeft().getData()==t.getData()){
+      Node tmp = new Node(t.getData()-1);
+      tmp.setLeft(t.getLeft());
+      t.setLeft(tmp);
+    }
+    if (t.getRight()!=null && t.getRight().getData()==t.getData()){
+      Node tmp = new Node(t.getData()-1);
+      tmp.setRight(t.getRight());
+      t.setRight(tmp);
+    }
+    else{
+      splitDupes(t.getLeft());
+      splitDupes(t.getRight());
+    }
+   }
+   
+   public int longest(){
+     return longest(r);
+   }
+   
+   //not working
+   public int longest(Node t){
+      if (t==null) return 0;
+      else{
+        return 1+max(longest(t.getRight()),longest(t.getLeft()),-1);
+      }
+   }
     
     
     public static void main(String[] args){
@@ -110,11 +142,17 @@ public class Tree{
 	    //System.out.println(z);
 	    t.insert(z);
 	}
+	t.insert(550);
+	t.insert(51);
+	t.insert(50);
 	System.out.println(t);
 	//				t.insert(30);
 	System.out.println(t.search(30));
 	System.out.println(t.maxValue());
 	System.out.println(t.height());
+  t.splitDupes();
+  System.out.println(t);
+  System.out.println(t.longest());
     }
 }
 
