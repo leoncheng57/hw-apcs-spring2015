@@ -3,8 +3,6 @@ import java.io.*;
 
 public class Heap{
   
-  //write heapsort!!!
-  
   private ArrayList<Integer> data;
   
   public Heap(){
@@ -28,6 +26,24 @@ public class Heap{
     }
   }
   
+  public pushDown(int n){
+    int hold = data.indexOf(n);
+    int leftChildIndex = hold*2;
+    int rightChildIndex = hold*2+1;
+    while(data.get(hold)>data.get(leftChildIndex) || data.get(hold)>data.get(rightChildIndex)){
+      if (data.get(leftChildIndex)<data.get(rightChildIndex)){
+        int tmp = data.get(hold);
+        data.set(hold,data.get(leftChildIndex));
+        data.set(leftChildIndex,tmp);
+      }
+      else{
+        int tmp = data.get(hold);
+        data.set(hold,data.get(rightChildIndex));
+        data.set(rightChildIndex,tmp);
+      }
+    }
+  }
+  
   public String toString(){
     return data+"";
   }
@@ -35,9 +51,10 @@ public class Heap{
   public static void main (String[] args) {
     Heap h = new Heap();
     h.insert(200);
-    h.insert(213);
-    h.insert(201);
     h.insert(13);
+    h.insert(12313);
+    h.insert(213);
+    h.insert(2011);
     System.out.println(h);
   }
 }
